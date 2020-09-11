@@ -82,7 +82,9 @@ public class Contract implements Versionable {
         String idnumber = customer.getIdnumber();
 
         //校验利率
-
+        if(interestRate.compareTo(new BigDecimal("36")) > 0){
+            throw new IllegalArgumentException("interestRate > 36.");
+        }
         //校验期限
 
         //校验年龄和额度关系
