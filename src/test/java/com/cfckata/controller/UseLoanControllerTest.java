@@ -20,7 +20,7 @@ public class UseLoanControllerTest extends ApiTest {
 		//When
 		ResponseEntity<UseLoanApplResponse> responseEntity = this.restTemplate.postForEntity(baseUrl + "/loans", useLoanApplRequest, UseLoanApplResponse.class);
 		//Then
-		assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+		assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 		UseLoanApplResponse useLoanApplResponse = responseEntity.getBody();
 		assertThat(useLoanApplResponse.getLoanId()).isNotNull();
 	}
@@ -30,7 +30,6 @@ public class UseLoanControllerTest extends ApiTest {
 
 		String loanId = "001";
 		ResponseEntity<UseLoanDataResponse> responseEntity = this.restTemplate.getForEntity(baseUrl + "/loans/" + loanId, UseLoanDataResponse.class);
-		assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 		UseLoanDataResponse response = responseEntity.getBody();
 		assertThat(response.getLoanId()).isEqualTo(loanId);
 	}
