@@ -1,14 +1,7 @@
 package com.cfckata.domain;
 
-import com.cfckata.request.CreateContractRequest;
 import com.github.meixuesong.aggregatepersistence.Versionable;
 import lombok.Data;
-
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
 
 @Data
 public class Contract implements Versionable {
@@ -16,7 +9,7 @@ public class Contract implements Versionable {
     /**
      * 合同id
      */
-    private String id;
+    private String contractId;
 
     /**
      * 客户id
