@@ -15,6 +15,12 @@ public class ContractController {
     @Autowired
     private ContractService contractService;
 
+    @GetMapping("/{contractId}")
+    public ContractResponse findContract(@PathVariable String contractId) {
+        Contract contract = contractService.findById(contractId);
+        return new ContractResponse(contract);
+    }
+
     //创建合同。有一下规则:年龄应该达到 18岁，年利率不得超过36%，
     // 期限是不得超过2年。最大额度与年龄的关系如 下:
     //        [18-20]: 1万;(20-30]:5万;(30-50]:20万;

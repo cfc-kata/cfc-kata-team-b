@@ -12,6 +12,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ContractControllerTest extends ApiTest {
 
     @Test
+    public void should_support_query_contract() {
+        //Given
+        String contractId = "aaa";
+        ResponseEntity<ContractResponse> responseEntity = this.restTemplate.getForEntity(baseUrl + "/contracts/" + contractId, ContractResponse.class);
+
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+        ContractResponse response = responseEntity.getBody();
+        assertThat(response.getContractId()).isEqualTo(contractId);
+    }
+
+    @Test
     //@Sql(scripts = "classpath:sql/order-test-before.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     //@Sql(scripts = "classpath:sql/order-test-after.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     public void should_support_create_contract() {

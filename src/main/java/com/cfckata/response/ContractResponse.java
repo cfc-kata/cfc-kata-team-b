@@ -9,7 +9,7 @@ public class ContractResponse {
     /**
      * 合同id
      */
-    private String id;
+    private String contractId;
 
     /**
      * 客户id
@@ -35,7 +35,7 @@ public class ContractResponse {
     }
 
     public ContractResponse(Contract contract) {
-        this.id = contract.getId();
+        this.contractId = contract.getContractId();
         this.customerId = contract.getCustomerId();
         this.age = contract.getAge();
         this.limit = contract.getLimit();
