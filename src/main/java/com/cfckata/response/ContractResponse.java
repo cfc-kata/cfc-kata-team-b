@@ -50,6 +50,10 @@ public class ContractResponse {
     public ContractResponse() {
     }
 
+    public ContractResponse(String contractId) {
+        this.contractId = contractId;
+    }
+
     public ContractResponse(Contract contract) {
         BeanUtil.copyProperties(contract, this);
     }

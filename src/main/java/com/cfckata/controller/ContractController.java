@@ -29,8 +29,8 @@ public class ContractController {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public ContractResponse createContract(@RequestBody CreateContractRequest request) {
-        Contract contract = contractService.createContract(request);
-        return new ContractResponse(contract);
+        String contractId = contractService.createContract(request);
+        return new ContractResponse(contractId);
     }
 
 }
