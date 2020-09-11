@@ -21,8 +21,8 @@ public class ContractController {
     //        (50-60]:3万;(60-70]:1万;(70-]:0元;
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ContractResponse createConstract(@RequestBody CreateContractRequest request) {
-        Contract contract = contractService.createConstract(request);
+    public ContractResponse createContract(@RequestBody CreateContractRequest request) {
+        Contract contract = contractService.createContract(request);
         return new ContractResponse(contract);
     }
 

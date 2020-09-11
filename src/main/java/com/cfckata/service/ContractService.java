@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ContractService {
 
-    public Contract createConstract(CreateContractRequest request) {
+    public Contract createContract(CreateContractRequest request) {
         return null;
     }
 }
