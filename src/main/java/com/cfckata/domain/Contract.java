@@ -3,6 +3,8 @@ package com.cfckata.domain;
 import com.github.meixuesong.aggregatepersistence.Versionable;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Data
 public class Contract implements Versionable {
 
@@ -12,24 +14,34 @@ public class Contract implements Versionable {
     private String contractId;
 
     /**
-     * 客户id
+     * 客户信息
      */
-    private String customerId;
+    private Customer customer;
 
     /**
-     * 期限
+     * 利率
      */
-    private Integer term;
+    private BigDecimal interestRate;
 
     /**
-     * 年龄
+     * 还款方式
      */
-    private Integer age;
+    private String repaymentType;
+
+    /**
+     * 到期日
+     */
+    private String maturityDate;
 
     /**
      * 额度
      */
-    private Integer limit;
+    private String commitment;
+
+    /**
+     * 状态
+     */
+    private String status;
 
     private int version;
 

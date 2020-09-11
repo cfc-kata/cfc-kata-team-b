@@ -15,9 +15,6 @@ public class ContractService {
 
     public Contract createContract(CreateContractRequest request) {
         Contract contract = new Contract();
-        contract.setAge(request.getAge());
-        contract.setCustomerId(request.getCustomerId());
-        contract.setTerm(request.getTerm());
        return contract;
     }
 
