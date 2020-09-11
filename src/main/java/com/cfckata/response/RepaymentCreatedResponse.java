@@ -2,7 +2,7 @@ package com.cfckata.response;
 
 import java.math.BigDecimal;
 
-import com.cfckata.domain.Repayment;
+import com.cfckata.domain.RepaymentDetail;
 
 public class RepaymentCreatedResponse {
 	
@@ -22,7 +22,7 @@ public class RepaymentCreatedResponse {
 	public RepaymentCreatedResponse(){
 	}
 	
-	public RepaymentCreatedResponse(Repayment repayment){
+	public RepaymentCreatedResponse(RepaymentDetail repayment){
 		this.repaymentId = repayment.getRepaymentId();
 		this.createdTime = repayment.getCreatedTime();
 		this.iouId = repayment.getIouId();

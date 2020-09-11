@@ -2,17 +2,24 @@ package com.cfckata.service;
 
 import org.springframework.stereotype.Service;
 
-import com.cfckata.domain.Repayment;
-import com.cfckata.proxy.RepayProxy;
+import com.cfckata.domain.RepaymentDetail;
+import com.cfckata.domain.RepaymentPlan;
+import com.cfckata.proxy.RepaymentProxy;
+import com.cfckata.repository.RepaymentPlanRepository;
+import com.github.meixuesong.aggregatepersistence.Aggregate;
 
 @Service
 public class RepaymentService {
 	
 	
-	private RepayProxy repayProxy;
+	private RepaymentProxy repaymentProxy;
 	
-	public RepaymentService(RepayProxy repayProxy){
-		this.repayProxy = repayProxy;
+	private RepaymentPlanRepository repaymentPlanRepository;
+	
+		
+	public RepaymentService(RepaymentProxy repaymentProxy,RepaymentPlanRepository repaymentPlanRepository){
+		this.repaymentProxy = repaymentProxy;
+		this.repaymentPlanRepository = repaymentPlanRepository;
 	}
 	
 	/**
@@ -20,12 +27,12 @@ public class RepaymentService {
 	 * @param repaymentId
 	 * @return
 	 */
-	public  Repayment queryRepaymentById(String repaymentId){
+	public  RepaymentDetail queryRepaymentById(String repaymentId){
 		
-		Repayment repayment = new Repayment();
+		RepaymentDetail repaymentDetail = new RepaymentDetail();
 		
 		//TODO
-		return repayment;
+		return repaymentDetail;
 		
 	}
 	
@@ -34,12 +41,22 @@ public class RepaymentService {
 	 * @param repaymentPlanId
 	 * @return
 	 */
-	public Repayment doRepaymentByPlanId(String repaymentPlanId){
-         Repayment repayment = new Repayment();
+	public RepaymentDetail doRepaymentByPlanId(String repaymentPlanId){
+		 RepaymentDetail repaymentDetail = new RepaymentDetail();
+		 		 
+		 Aggregate<RepaymentPlan> repaymentPlanAggregate = repaymentPlanRepository.findById(repaymentPlanId);
+		 
+		 RepaymentPlan repaymentPlan = repaymentPlanAggregate.getRoot();
+		 
+         String repaymentId = repaymentProxy.repay(repaymentPlan.getRepaymentBankAccount(), repaymentPlan.totalPeriodAmt());
          
-         repayProxy.repay(repayment.getRepaymentBankAccount(), repayment.getAmount()); 
+         repaymentDetail.setRepaymentId(repaymentId);
+         repaymentDetail.setAmount(repaymentPlan.totalPeriodAmt());
+         repaymentDetail.setIouId(repaymentPlan.getIouId());
+         repaymentDetail.setRepaymentBankAccount(repaymentPlan.getRepaymentBankAccount());
+         repaymentDetail.setRepaymentPlanId(repaymentPlan.getId());
          
-		return repayment;
+		return repaymentDetail;
 		
 	}
 }

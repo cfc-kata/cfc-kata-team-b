@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 
 @Service
-public class RepayProxy {
+public class RepaymentProxy {
 	
 	/**
 	 * 调用支付还款接口

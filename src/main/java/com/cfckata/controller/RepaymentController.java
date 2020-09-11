@@ -1,6 +1,6 @@
 package com.cfckata.controller;
 
-import com.cfckata.domain.Repayment;
+import com.cfckata.domain.RepaymentDetail;
 import com.cfckata.exception.RepaymentException;
 import com.cfckata.request.RepaymentRequest;
 import com.cfckata.response.RepaymentCreatedResponse;
@@ -49,7 +49,7 @@ public class RepaymentController {
 	@GetMapping("/{repaymentId}")
     public RepaymentCreatedResponse queryRepaymentInfoByRepaymentId(@PathVariable String repaymentId) {
 		
-		Repayment repayment = repaymentService.queryRepaymentById(repaymentId);
+		RepaymentDetail repayment = repaymentService.queryRepaymentById(repaymentId);
 		
 		RepaymentCreatedResponse response = new RepaymentCreatedResponse(repayment);
 		return response;

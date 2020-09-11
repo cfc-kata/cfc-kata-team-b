@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
-public class Repayment {
+public class RepaymentDetail {
 	//扣款流水号
 		private String repaymentId;
 		//创建时间
