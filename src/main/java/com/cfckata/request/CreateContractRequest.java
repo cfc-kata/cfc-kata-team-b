@@ -1,25 +1,35 @@
 package com.cfckata.request;
 
-import lombok.AllArgsConstructor;
+import com.cfckata.domain.Customer;
 import lombok.Data;
+import lombok.experimental.Accessors;
+
+import java.math.BigDecimal;
 
 @Data
-@AllArgsConstructor
+@Accessors(chain = true)
 public class CreateContractRequest {
 
-    /**
-     * 客户id
-     */
-    private String customerId;
+    private Customer customer;
 
     /**
-     * 期限
+     * 利率
      */
-    private Integer term;
+    private BigDecimal interestRate;
 
     /**
-     * 年龄
+     * 还款方式
      */
-    private Integer age;
+    private String repaymentType;
+
+    /**
+     * 到期日
+     */
+    private String maturityDate;
+
+    /**
+     * 额度
+     */
+    private BigDecimal commitment;
 
 }

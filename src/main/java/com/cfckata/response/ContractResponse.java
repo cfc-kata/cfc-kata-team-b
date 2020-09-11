@@ -4,10 +4,12 @@ import cn.hutool.core.bean.BeanUtil;
 import com.cfckata.domain.Contract;
 import com.cfckata.domain.Customer;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 
 @Data
+@Accessors(chain = true)
 public class ContractResponse {
 
     /**
