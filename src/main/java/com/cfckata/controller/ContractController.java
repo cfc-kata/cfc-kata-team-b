@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/constract")
+@RequestMapping("/contracts")
 public class ContractController {
 
     @Autowired
@@ -21,6 +21,7 @@ public class ContractController {
     //        (50-60]:3万;(60-70]:1万;(70-]:0元;
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
     public ContractResponse createContract(@RequestBody CreateContractRequest request) {
         Contract contract = contractService.createContract(request);
         return new ContractResponse(contract);
