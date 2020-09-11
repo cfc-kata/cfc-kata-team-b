@@ -1,6 +1,8 @@
 package com.cfckata.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,9 @@ public class RepaymentControllerTest extends ApiTest {
 				.getForEntity(baseUrl + "/repayments/" + repaymentId, RepaymentCreatedResponse.class);
 
 		assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+		
+		RepaymentCreatedResponse repayment = responseEntity.getBody();
+		assertNotNull(repayment);
 
 	}
 

@@ -11,10 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cfckata.request.RepaymentRequest;
 import com.cfckata.response.RepaymentCreatedResponse;
+import com.cfckata.service.RepaymentService;
 
 @RestController
 @RequestMapping("/repayments")
 public class RepaymentController {
+	
+	
+	private RepaymentService repaymentService;
+	
+	public RepaymentController(RepaymentService repaymentService) {
+        this.repaymentService = repaymentService;
+    }
 
 	@PostMapping
     @ResponseStatus(HttpStatus.CREATED)
