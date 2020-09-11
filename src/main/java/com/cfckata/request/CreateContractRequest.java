@@ -1,5 +1,10 @@
 package com.cfckata.request;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class CreateContractRequest {
 
     /**
@@ -10,11 +15,11 @@ public class CreateContractRequest {
     /**
      * 期限
      */
-    private Integer limit;
+    private Integer term;
 
     /**
      * 年龄
      */
-    private String age;
+    private Integer age;
 
 }
