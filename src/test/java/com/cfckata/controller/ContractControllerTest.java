@@ -49,8 +49,8 @@ public class ContractControllerTest extends ApiTest {
 
         //Then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-        ContractResponse contract = responseEntity.getBody();
-        assertThat(contract).isNotNull();
+        ContractResponse response = responseEntity.getBody();
+        assertThat(response.getContractId()).isNotNull();
     }
 
 }
