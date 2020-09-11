@@ -2,20 +2,34 @@ package com.cfckata.response;
 
 import java.math.BigDecimal;
 
+import com.cfckata.domain.Repayment;
+
 public class RepaymentCreatedResponse {
 	
 	//扣款流水号
 	private String repaymentId;
 	//创建时间
 	private String createdTime;
-	//合同号
-	private String contractId;
+	//借据号
+	private String iouId;
 	//还款计划行ID
 	private String repaymentPlanId;
 	//还款金额
 	private BigDecimal amount;
 	//还款卡号
 	private String repaymentBankAccount;
+	
+	public RepaymentCreatedResponse(){
+	}
+	
+	public RepaymentCreatedResponse(Repayment repayment){
+		this.repaymentId = repayment.getRepaymentId();
+		this.createdTime = repayment.getCreatedTime();
+		this.iouId = repayment.getIouId();
+		this.repaymentPlanId = repayment.getRepaymentPlanId();
+		this.amount = repayment.getAmount();
+		this.repaymentBankAccount = repayment.getRepaymentBankAccount();
+	}
 	
 	
 	public String getRepaymentId() {
@@ -30,12 +44,17 @@ public class RepaymentCreatedResponse {
 	public void setCreatedTime(String createdTime) {
 		this.createdTime = createdTime;
 	}
-	public String getContractId() {
-		return contractId;
+	
+	public String getIouId() {
+		return iouId;
 	}
-	public void setContractId(String contractId) {
-		this.contractId = contractId;
+
+
+	public void setIouId(String iouId) {
+		this.iouId = iouId;
 	}
+
+
 	public String getRepaymentPlanId() {
 		return repaymentPlanId;
 	}
