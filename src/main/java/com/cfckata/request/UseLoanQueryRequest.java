@@ -1,9 +1,8 @@
 package com.cfckata.request;
 
-import com.sun.istack.internal.NotNull;
-import lombok.Data;
-
 import java.io.Serializable;
+
+import lombok.Data;
 
 @Data
 public class UseLoanQueryRequest implements Serializable {
