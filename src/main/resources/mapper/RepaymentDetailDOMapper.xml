@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cfckata.dao.RepaymentDetailDOMapper">
+  <resultMap id="BaseResultMap" type="com.cfckata.dao.RepaymentDetailDO">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="loan_id" jdbcType="VARCHAR" property="loanId" />
+    <result column="repayment_plan_id" jdbcType="VARCHAR" property="repaymentPlanId" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="repayment_bank_account" jdbcType="VARCHAR" property="repaymentBankAccount" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, loan_id, repayment_plan_id, amount, repayment_bank_account, version
+  </sql>
+  <insert id="insert" parameterType="com.cfckata.dao.RepaymentDetailDO">
+    insert into repayment_detail (id, create_time, loan_id,
+      repayment_plan_id, amount, repayment_bank_account, version
+      )
+    values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{loanId,jdbcType=VARCHAR},
+      #{repaymentPlanId,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, #{repaymentBankAccount,jdbcType=TINYINT}, 1
+      )
+  </insert>
+  <select id="findRepaymentDetailById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from repayment_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+</mapper>

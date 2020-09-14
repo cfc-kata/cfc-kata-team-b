@@ -11,7 +11,7 @@ public class RepaymentCreatedResponse {
 	//创建时间
 	private String createdTime;
 	//借据号
-	private String iouId;
+	private String loanId;
 	//还款计划行ID
 	private String repaymentPlanId;
 	//还款金额
@@ -25,7 +25,7 @@ public class RepaymentCreatedResponse {
 	public RepaymentCreatedResponse(RepaymentDetail repayment){
 		this.repaymentId = repayment.getRepaymentId();
 		this.createdTime = repayment.getCreatedTime();
-		this.iouId = repayment.getIouId();
+		this.loanId = repayment.getLoanId();
 		this.repaymentPlanId = repayment.getRepaymentPlanId();
 		this.amount = repayment.getAmount();
 		this.repaymentBankAccount = repayment.getRepaymentBankAccount();
@@ -45,13 +45,13 @@ public class RepaymentCreatedResponse {
 		this.createdTime = createdTime;
 	}
 	
-	public String getIouId() {
-		return iouId;
+	public String getLoanId() {
+		return loanId;
 	}
 
 
-	public void setIouId(String iouId) {
-		this.iouId = iouId;
+	public void setIouId(String loanId) {
+		this.loanId = loanId;
 	}
 
 

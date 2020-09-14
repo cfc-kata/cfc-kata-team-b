@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cfckata.dao.RepaymentPlanDOMapper">
+  <resultMap id="BaseResultMap" type="com.cfckata.dao.RepaymentPlanDO">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="loan_id" jdbcType="VARCHAR" property="loanId" />
+    <result column="due_dt" jdbcType="VARCHAR" property="dueDt" />
+    <result column="term_no" jdbcType="VARCHAR" property="termNo" />
+    <result column="prcp_amt" jdbcType="DECIMAL" property="prcpAmt" />
+    <result column="prcp_int" jdbcType="DECIMAL" property="prcpInt" />
+    <result column="repayment_bank_account" jdbcType="VARCHAR" property="repaymentBankAccount" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, create_time, loan_id, due_dt, term_no, prcp_amt,prcp_int,repayment_bank_account, version,repay_sts
+  </sql>
+  <insert id="insert" parameterType="com.cfckata.dao.RepaymentPlanDO">
+    insert into repayment_plan (id, create_time, loan_id, due_dt, term_no, 
+    	prcp_amt,prcp_int,repayment_bank_account, version,repay_sts
+      )
+    values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{loanId,jdbcType=VARCHAR},
+      #{dueDt,jdbcType=VARCHAR}, #{termNo,jdbcType=VARCHAR}, #{prcpAmt,jdbcType=DECIMAL}, #{prcpInt,jdbcType=DECIMAL}, #{repaymentBankAccount,jdbcType=TINYINT}, 1,"NORM"
+      )
+  </insert>
+  <select id="findRepaymentPlanById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from repayment_plan
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <update id="updateRepayStsById" parameterType="java.lang.String">
+    update repayment_plan set repay_sts = #{repaySts,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

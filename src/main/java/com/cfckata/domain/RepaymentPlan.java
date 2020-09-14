@@ -10,11 +10,13 @@ import lombok.Data;
 public class RepaymentPlan implements Versionable{
 
 	// 借据号
-	private String iouId;
+	private String loanId;
 	// 还款计划行ID
 	private String id;
 	// 应还款日
 	private String dueDt;
+	
+	private String termNo;
 	
 	// 还款金额
 	private BigDecimal prcpAmt = BigDecimal.ZERO;
@@ -25,6 +27,8 @@ public class RepaymentPlan implements Versionable{
     private String repaymentBankAccount;
 	
     private int version;
+    
+    private String repaySts;
 	
 	@Override
     public int getVersion() {
