@@ -19,6 +19,11 @@ public class RepaymentCreatedResponse {
 	//还款卡号
 	private String repaymentBankAccount;
 	
+	//错误码
+	private String errorCode;
+	//错误信息
+	private String errorMessage;
+	
 	public RepaymentCreatedResponse(){
 	}
 	
@@ -29,6 +34,14 @@ public class RepaymentCreatedResponse {
 		this.repaymentPlanId = repayment.getRepaymentPlanId();
 		this.amount = repayment.getAmount();
 		this.repaymentBankAccount = repayment.getRepaymentBankAccount();
+		this.errorCode = repayment.getErrorCode();
+		this.errorMessage = repayment.getErrorMessage();
+	}
+	
+	
+	public RepaymentCreatedResponse(String errorCode,String errorMessage){
+		this.errorCode = errorCode;
+		this.errorMessage = errorMessage;
 	}
 	
 	
@@ -49,12 +62,6 @@ public class RepaymentCreatedResponse {
 		return loanId;
 	}
 
-
-	public void setIouId(String loanId) {
-		this.loanId = loanId;
-	}
-
-
 	public String getRepaymentPlanId() {
 		return repaymentPlanId;
 	}
@@ -72,6 +79,26 @@ public class RepaymentCreatedResponse {
 	}
 	public void setRepaymentBankAccount(String repaymentBankAccount) {
 		this.repaymentBankAccount = repaymentBankAccount;
+	}
+
+	public String getErrorCode() {
+		return errorCode;
+	}
+
+	public void setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
+	public void setLoanId(String loanId) {
+		this.loanId = loanId;
 	}
 	
 	

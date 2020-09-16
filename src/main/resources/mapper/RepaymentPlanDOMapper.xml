@@ -29,6 +29,12 @@
     from repayment_plan
     where id = #{id,jdbcType=VARCHAR}
   </select>
+  <select id="findListByRepaymentDate" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from repayment_plan
+    where due_dt = #{repaymentDate,jdbcType=VARCHAR}
+  </select>
   <update id="updateRepayStsById" parameterType="java.lang.String">
     update repayment_plan set repay_sts = #{repaySts,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}

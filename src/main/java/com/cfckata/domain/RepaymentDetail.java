@@ -20,4 +20,12 @@ public class RepaymentDetail {
 		private String repaymentBankAccount;
 		
 	    private int version;
+	    
+	    private String paySerno;
+	    
+	    private String sts;
+	    
+	    private String errorCode;
+	    
+	    private String errorMessage;
 }

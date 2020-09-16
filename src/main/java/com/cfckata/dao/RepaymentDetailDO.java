@@ -25,6 +25,10 @@ public class RepaymentDetailDO {
 	
     private int version;
     
+    private String paySerno;
+    
+    private String sts;
+    
     public RepaymentDetailDO() {
     	
     }
@@ -37,6 +41,8 @@ public class RepaymentDetailDO {
 		this.amount = detail.getAmount();
 		this.repaymentBankAccount = detail.getRepaymentBankAccount();
 		this.version = detail.getVersion();
+		this.paySerno = detail.getPaySerno();
+		this.sts = detail.getSts();
 	}
 	
 	
@@ -50,7 +56,8 @@ public class RepaymentDetailDO {
 		detail.setRepaymentId(this.getId());
 		detail.setRepaymentPlanId(this.getRepaymentPlanId());
 		detail.setVersion(this.getVersion());
-		
+		detail.setSts(this.getSts());
+		detail.setPaySerno(this.getPaySerno());
 		return detail;
 	}
 }

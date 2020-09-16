@@ -11,6 +11,7 @@ import org.springframework.test.context.jdbc.Sql;
 
 import com.cfckata.common.ApiTest;
 import com.cfckata.request.RepaymentRequest;
+import com.cfckata.response.RepaymentBatchCreatedResponse;
 import com.cfckata.response.RepaymentCreatedResponse;
 
 public class RepaymentControllerTest extends ApiTest {
@@ -18,7 +19,7 @@ public class RepaymentControllerTest extends ApiTest {
 	@Test
 	@Sql(scripts = "classpath:sql/repayment-test-before.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     @Sql(scripts = "classpath:sql/repayment-test-after.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
-	public void shouldQueryRepaymentInfoByRepaymentId() {
+	public void should_query_repayment_info_by_repayment_id() {
 		String repaymentId = "DETAIL2020091400002";
 		ResponseEntity<RepaymentCreatedResponse> responseEntity = this.restTemplate
 				.getForEntity(baseUrl + "/repayments/" + repaymentId, RepaymentCreatedResponse.class);
@@ -33,7 +34,7 @@ public class RepaymentControllerTest extends ApiTest {
 	@Test
 	@Sql(scripts = "classpath:sql/repayment-test-before.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     @Sql(scripts = "classpath:sql/repayment-test-after.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
-	public void shouldRepaymentCreateSuccess() {
+	public void should_repayment_create_success() {
 		RepaymentRequest request = new RepaymentRequest();
 		request.setRepaymentPlanId("PLAN2020091400006");
 
@@ -44,6 +45,19 @@ public class RepaymentControllerTest extends ApiTest {
 		RepaymentCreatedResponse repayment = responseEntity.getBody();
 		assertNotNull(repayment);
 
+	}
+	
+	
+	@Test
+	@Sql(scripts = "classpath:sql/repayment-test-before.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:sql/repayment-test-after.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+	public void should_repayment_batch_create_success() {
+		String repayDt = "2020-09-12";
+
+		ResponseEntity<RepaymentBatchCreatedResponse> responseEntity = this.restTemplate
+				.getForEntity(baseUrl + "/repayments/batch/"+repayDt, RepaymentBatchCreatedResponse.class);
+
+		assertThat(responseEntity.getBody().getSuccessItems().size()).isEqualTo(2);
 	}
 
 }

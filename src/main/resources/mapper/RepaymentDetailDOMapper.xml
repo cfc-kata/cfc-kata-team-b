@@ -11,14 +11,15 @@
     <result column="version" jdbcType="INTEGER" property="version" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, create_time, loan_id, repayment_plan_id, amount, repayment_bank_account, version
+    id, create_time, loan_id, repayment_plan_id, amount, repayment_bank_account, version, pay_serno, sts
   </sql>
   <insert id="insert" parameterType="com.cfckata.dao.RepaymentDetailDO">
     insert into repayment_detail (id, create_time, loan_id,
-      repayment_plan_id, amount, repayment_bank_account, version
+      repayment_plan_id, amount, repayment_bank_account,pay_serno,sts,version
       )
     values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{loanId,jdbcType=VARCHAR},
-      #{repaymentPlanId,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, #{repaymentBankAccount,jdbcType=TINYINT}, 1
+      #{repaymentPlanId,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, #{repaymentBankAccount,jdbcType=TINYINT},
+      #{paySerno,jdbcType=VARCHAR},#{sts,jdbcType=VARCHAR}, 1
       )
   </insert>
   <select id="findRepaymentDetailById" parameterType="java.lang.String" resultMap="BaseResultMap">
